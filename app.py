@@ -9,6 +9,7 @@ from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 from langchain_community.embeddings.sentence_transformer import SentenceTransformerEmbeddings
 from dotenv import load_dotenv
+import os
 
 # Load environment variables
 load_dotenv()
@@ -52,6 +53,7 @@ def get_conversation_chain(vectorstore):
     return conversation_chain
 
 def handle_user_question(user_question):
+    print(user_question)
     response = st.session_state.conversation({"question": user_question})
     st.session_state.chat_history = response['chat_history']
     is_user_message = True
